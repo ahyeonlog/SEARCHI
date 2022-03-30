@@ -16,14 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             window = UIWindow()
-            window?.rootViewController = ViewController()
+            window?.rootViewController = SearchViewController()
             window?.makeKeyAndVisible()
         }
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.

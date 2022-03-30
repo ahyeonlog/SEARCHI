@@ -17,6 +17,12 @@
 		E58A9D0E27F4305E00A4ACBB /* SEARCHIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D0D27F4305E00A4ACBB /* SEARCHIUITestsLaunchTests.swift */; };
 		E58A9D1E27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D1D27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift */; };
 		E58A9D2027F46EA700A4ACBB /* KakaoService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E58A9D1F27F46EA700A4ACBB /* KakaoService-Info.plist */; };
+		E58A9D2327F4C27500A4ACBB /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = E58A9D2227F4C27500A4ACBB /* Moya */; };
+		E58A9D2527F4C27500A4ACBB /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = E58A9D2427F4C27500A4ACBB /* RxMoya */; };
+		E58A9D2827F4C28600A4ACBB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E58A9D2727F4C28600A4ACBB /* SnapKit */; };
+		E58A9D2D27F4C50700A4ACBB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E58A9D2C27F4C50700A4ACBB /* Then */; };
+		E58A9D3627F4CA1700A4ACBB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D3527F4CA1700A4ACBB /* NetworkService.swift */; };
+		E58A9D3827F4CA3D00A4ACBB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D3727F4CA3D00A4ACBB /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,8 @@
 		E58A9D0D27F4305E00A4ACBB /* SEARCHIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEARCHIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E58A9D1D27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecretKey+Bundle+Ex.swift"; sourceTree = "<group>"; };
 		E58A9D1F27F46EA700A4ACBB /* KakaoService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KakaoService-Info.plist"; sourceTree = "<group>"; };
+		E58A9D3527F4CA1700A4ACBB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E58A9D3727F4CA3D00A4ACBB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58A9D2827F4C28600A4ACBB /* SnapKit in Frameworks */,
+				E58A9D2527F4C27500A4ACBB /* RxMoya in Frameworks */,
+				E58A9D2327F4C27500A4ACBB /* Moya in Frameworks */,
+				E58A9D2D27F4C50700A4ACBB /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +113,8 @@
 		E58A9CE927F4305A00A4ACBB /* SEARCHI */ = {
 			isa = PBXGroup;
 			children = (
+				E58A9D3127F4C5B100A4ACBB /* Domain */,
+				E58A9D2A27F4C3D100A4ACBB /* Data */,
 				E58A9D1C27F43BF200A4ACBB /* Util */,
 				E58A9D1B27F4349B00A4ACBB /* Presentation */,
 				E58A9D1A27F4342200A4ACBB /* Application */,
@@ -138,7 +152,7 @@
 		E58A9D1B27F4349B00A4ACBB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				E58A9CEE27F4305A00A4ACBB /* ViewController.swift */,
+				E58A9D2927F4C3B900A4ACBB /* SearchScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -152,6 +166,70 @@
 				E58A9D1F27F46EA700A4ACBB /* KakaoService-Info.plist */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		E58A9D2927F4C3B900A4ACBB /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				E58A9CEE27F4305A00A4ACBB /* ViewController.swift */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		E58A9D2A27F4C3D100A4ACBB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E58A9D2F27F4C53F00A4ACBB /* Repository */,
+				E58A9D2E27F4C53500A4ACBB /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E58A9D2E27F4C53500A4ACBB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E58A9D3527F4CA1700A4ACBB /* NetworkService.swift */,
+				E58A9D3727F4CA3D00A4ACBB /* Endpoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E58A9D2F27F4C53F00A4ACBB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		E58A9D3127F4C5B100A4ACBB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E58A9D3427F4C5D700A4ACBB /* RepositoryInterface */,
+				E58A9D3327F4C5BD00A4ACBB /* UseCase */,
+				E58A9D3227F4C5B700A4ACBB /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E58A9D3227F4C5B700A4ACBB /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E58A9D3327F4C5BD00A4ACBB /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		E58A9D3427F4C5D700A4ACBB /* RepositoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RepositoryInterface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +248,12 @@
 			dependencies = (
 			);
 			name = SEARCHI;
+			packageProductDependencies = (
+				E58A9D2227F4C27500A4ACBB /* Moya */,
+				E58A9D2427F4C27500A4ACBB /* RxMoya */,
+				E58A9D2727F4C28600A4ACBB /* SnapKit */,
+				E58A9D2C27F4C50700A4ACBB /* Then */,
+			);
 			productName = SEARCHI;
 			productReference = E58A9CE727F4305A00A4ACBB /* SEARCHI.app */;
 			productType = "com.apple.product-type.application";
@@ -242,6 +326,11 @@
 				Base,
 			);
 			mainGroup = E58A9CDE27F4305A00A4ACBB;
+			packageReferences = (
+				E58A9D2127F4C27500A4ACBB /* XCRemoteSwiftPackageReference "Moya" */,
+				E58A9D2627F4C28600A4ACBB /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E58A9D2B27F4C50700A4ACBB /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = E58A9CE827F4305A00A4ACBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,9 +374,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58A9D3627F4CA1700A4ACBB /* NetworkService.swift in Sources */,
 				E58A9D1E27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift in Sources */,
 				E58A9CEF27F4305A00A4ACBB /* ViewController.swift in Sources */,
 				E58A9CEB27F4305A00A4ACBB /* AppDelegate.swift in Sources */,
+				E58A9D3827F4CA3D00A4ACBB /* Endpoint.swift in Sources */,
 				E58A9CED27F4305A00A4ACBB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,6 +715,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E58A9D2127F4C27500A4ACBB /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E58A9D2627F4C28600A4ACBB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		E58A9D2B27F4C50700A4ACBB /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E58A9D2227F4C27500A4ACBB /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58A9D2127F4C27500A4ACBB /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		E58A9D2427F4C27500A4ACBB /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58A9D2127F4C27500A4ACBB /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		E58A9D2727F4C28600A4ACBB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58A9D2627F4C28600A4ACBB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E58A9D2C27F4C50700A4ACBB /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58A9D2B27F4C50700A4ACBB /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E58A9CDF27F4305A00A4ACBB /* Project object */;
 }
