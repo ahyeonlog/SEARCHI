@@ -16,3 +16,33 @@
   - [ ] 이미지가 세로로 길 경우 스크롤 됩니다. 
   - [ ] response 데이터에 출처 'display_sitename', 문서 작성 시간 'datetime'이 있을 경우 전체 화면 이미지 밑에 표시해 줍니다.
 
+
+
+### 고려사항
+
+
+
+1. `UIGraphicsImageRenderer`
+이미지뷰가 필요로 하는 크기에 맞추어 이미지를 리사이즈해서 메모리 낭비를 줄임
+
+```swift
+extension UIImage {
+    func resizedImage(targetSize: CGSize) -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+    }
+    
+    func resizedImage(newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / self.size.width
+        let newHeight = self.size.height * scale
+        let size = CGSize(width: newWidth, height: newHeight)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}
+```
+

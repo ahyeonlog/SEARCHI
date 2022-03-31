@@ -10,3 +10,4 @@ import RxSwift
 protocol ImageRepository: AnyObject {
     func requestSearchImage(query: ImageQuery, page: Int) -> Single<ImageDocuments> // 이미지 검색 결과
 }
+

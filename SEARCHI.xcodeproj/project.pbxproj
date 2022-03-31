@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E546931027F60B22007A1791 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546930F27F60B22007A1791 /* UIImage+Resize.swift */; };
 		E58A9CEB27F4305A00A4ACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9CEA27F4305A00A4ACBB /* AppDelegate.swift */; };
 		E58A9CED27F4305A00A4ACBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9CEC27F4305A00A4ACBB /* SceneDelegate.swift */; };
 		E58A9CEF27F4305A00A4ACBB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9CEE27F4305A00A4ACBB /* SearchViewController.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E546930F27F60B22007A1791 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		E58A9CE727F4305A00A4ACBB /* SEARCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEARCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58A9CEA27F4305A00A4ACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E58A9CEC27F4305A00A4ACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E546930E27F60B08007A1791 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E546930F27F60B22007A1791 /* UIImage+Resize.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E58A9CDE27F4305A00A4ACBB = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +193,7 @@
 		E58A9D1C27F43BF200A4ACBB /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E546930E27F60B08007A1791 /* Extension */,
 				E58A9CF327F4305D00A4ACBB /* Assets.xcassets */,
 				E58A9CF527F4305D00A4ACBB /* LaunchScreen.storyboard */,
 				E58A9D1D27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift */,
@@ -436,6 +447,7 @@
 				E58A9D4427F5B13B00A4ACBB /* SearchView.swift in Sources */,
 				E58A9D5327F5F4E300A4ACBB /* DefaultImageRepository.swift in Sources */,
 				E58A9D4227F5972C00A4ACBB /* DefaultSearchCoordinator.swift in Sources */,
+				E546931027F60B22007A1791 /* UIImage+Resize.swift in Sources */,
 				E58A9D3627F4CA1700A4ACBB /* KakaoAPI.swift in Sources */,
 				E58A9D4927F5EC6700A4ACBB /* ImageRepository.swift in Sources */,
 				E58A9D1E27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift in Sources */,
