@@ -12,15 +12,19 @@ final class DefaultSearchCoordinator: NSObject, SearchCoordinator {
     var navigationController: UINavigationController
     var finishDelegate: CoordinatorFinishDelegate?
     var type: CoordinatorType = .search
+    var searchImageViewController: SearchImageViewController
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.searchImageViewController = SearchImageViewController()
     }
     
     func start() {
-        let vc = SearchViewController()
-        //  vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        searchImageViewController.viewModel = SearchImageViewModel(
+            searchImageUseCase: DefaultSearchImageUseCase(),
+            coordinator: self
+        )
+        navigationController.pushViewController(searchImageViewController, animated: false)
     }
 
 }

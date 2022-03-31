@@ -1,5 +1,5 @@
 //
-//  SearchView.swift
+//  SearchImageView.swift
 //  SEARCHI
 //
 //  Created by Ahyeonway on 2022/03/31.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SearchView: UIView, ViewRepresentable {
+final class SearchImageView: UIView, ViewRepresentable {
     let searchBar = UISearchBar().then {
         $0.placeholder = "어떤 이미지를 찾고 있나요?"
     }
