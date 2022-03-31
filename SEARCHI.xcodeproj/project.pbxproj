@@ -23,6 +23,9 @@
 		E58A9D2D27F4C50700A4ACBB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E58A9D2C27F4C50700A4ACBB /* Then */; };
 		E58A9D3627F4CA1700A4ACBB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D3527F4CA1700A4ACBB /* NetworkService.swift */; };
 		E58A9D3827F4CA3D00A4ACBB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D3727F4CA3D00A4ACBB /* Endpoint.swift */; };
+		E58A9D3A27F4D43500A4ACBB /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D3927F4D43500A4ACBB /* SearchCoordinator.swift */; };
+		E58A9D3F27F596AC00A4ACBB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D3E27F596AC00A4ACBB /* Coordinator.swift */; };
+		E58A9D4227F5972C00A4ACBB /* DefaultSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9D4127F5972C00A4ACBB /* DefaultSearchCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		E58A9D1F27F46EA700A4ACBB /* KakaoService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KakaoService-Info.plist"; sourceTree = "<group>"; };
 		E58A9D3527F4CA1700A4ACBB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E58A9D3727F4CA3D00A4ACBB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E58A9D3927F4D43500A4ACBB /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		E58A9D3E27F596AC00A4ACBB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E58A9D4127F5972C00A4ACBB /* DefaultSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,7 @@
 		E58A9D1B27F4349B00A4ACBB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E58A9D3B27F5964400A4ACBB /* Common */,
 				E58A9D2927F4C3B900A4ACBB /* SearchScene */,
 			);
 			path = Presentation;
@@ -171,6 +178,8 @@
 		E58A9D2927F4C3B900A4ACBB /* SearchScene */ = {
 			isa = PBXGroup;
 			children = (
+				E58A9D4127F5972C00A4ACBB /* DefaultSearchCoordinator.swift */,
+				E58A9D3927F4D43500A4ACBB /* SearchCoordinator.swift */,
 				E58A9CEE27F4305A00A4ACBB /* ViewController.swift */,
 			);
 			path = SearchScene;
@@ -230,6 +239,22 @@
 			children = (
 			);
 			path = RepositoryInterface;
+			sourceTree = "<group>";
+		};
+		E58A9D3B27F5964400A4ACBB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E58A9D4027F596CF00A4ACBB /* Protocol */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E58A9D4027F596CF00A4ACBB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E58A9D3E27F596AC00A4ACBB /* Coordinator.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,12 +399,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58A9D4227F5972C00A4ACBB /* DefaultSearchCoordinator.swift in Sources */,
 				E58A9D3627F4CA1700A4ACBB /* NetworkService.swift in Sources */,
 				E58A9D1E27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift in Sources */,
 				E58A9CEF27F4305A00A4ACBB /* ViewController.swift in Sources */,
 				E58A9CEB27F4305A00A4ACBB /* AppDelegate.swift in Sources */,
 				E58A9D3827F4CA3D00A4ACBB /* Endpoint.swift in Sources */,
 				E58A9CED27F4305A00A4ACBB /* SceneDelegate.swift in Sources */,
+				E58A9D3A27F4D43500A4ACBB /* SearchCoordinator.swift in Sources */,
+				E58A9D3F27F596AC00A4ACBB /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -533,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
