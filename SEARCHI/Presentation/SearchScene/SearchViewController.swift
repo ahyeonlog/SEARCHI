@@ -7,14 +7,20 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
-
+final class SearchViewController: UIViewController {
+    let mainView = SearchView()
+    
+    override func loadView() {
+        view = mainView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .purple
+        self.navigationItem.titleView = mainView.searchBar
     }
 
 
 }
+
 
