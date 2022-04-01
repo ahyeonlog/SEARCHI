@@ -11,7 +11,7 @@ import RxMoya
 import RxSwift
 
 enum KakaoAPI {
-    case searchImage
+    case searchImage(param: ImageRequestDTO)
 }
 
 
@@ -35,7 +35,13 @@ extension KakaoAPI: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .searchImage(let param):
+            return .requestParameters(
+                parameters: param.toDictionary,
+                encoding: URLEncoding.default)
+        }
+        
     }
     
     var headers: [String : String]? {

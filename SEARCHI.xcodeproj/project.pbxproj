@@ -15,6 +15,10 @@
 		E546931E27F6278A007A1791 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E546931D27F6278A007A1791 /* RxCocoa */; };
 		E546932027F6278A007A1791 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = E546931F27F6278A007A1791 /* RxRelay */; };
 		E546932227F6278A007A1791 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E546932127F6278A007A1791 /* RxSwift */; };
+		E546932427F66EEF007A1791 /* ImageResultListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546932327F66EEF007A1791 /* ImageResultListItemViewModel.swift */; };
+		E546932727F67399007A1791 /* ImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546932627F67399007A1791 /* ImagesResponseDTO.swift */; };
+		E546932927F678E6007A1791 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546932827F678E6007A1791 /* ErrorTracker.swift */; };
+		E546932B27F67CC6007A1791 /* ImageRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546932A27F67CC6007A1791 /* ImageRequestDTO.swift */; };
 		E58A9CEB27F4305A00A4ACBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9CEA27F4305A00A4ACBB /* AppDelegate.swift */; };
 		E58A9CED27F4305A00A4ACBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9CEC27F4305A00A4ACBB /* SceneDelegate.swift */; };
 		E58A9CEF27F4305A00A4ACBB /* SearchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58A9CEE27F4305A00A4ACBB /* SearchImageViewController.swift */; };
@@ -67,6 +71,10 @@
 		E546931627F62532007A1791 /* SearchImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageViewModel.swift; sourceTree = "<group>"; };
 		E546931827F625AC007A1791 /* SearchImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E546931A27F625DD007A1791 /* ViewReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewReusable.swift; sourceTree = "<group>"; };
+		E546932327F66EEF007A1791 /* ImageResultListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResultListItemViewModel.swift; sourceTree = "<group>"; };
+		E546932627F67399007A1791 /* ImagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponseDTO.swift; sourceTree = "<group>"; };
+		E546932827F678E6007A1791 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		E546932A27F67CC6007A1791 /* ImageRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestDTO.swift; sourceTree = "<group>"; };
 		E58A9CE727F4305A00A4ACBB /* SEARCHI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEARCHI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58A9CEA27F4305A00A4ACBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E58A9CEC27F4305A00A4ACBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,8 +167,18 @@
 			isa = PBXGroup;
 			children = (
 				E546931627F62532007A1791 /* SearchImageViewModel.swift */,
+				E546932327F66EEF007A1791 /* ImageResultListItemViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E546932527F6732A007A1791 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				E546932627F67399007A1791 /* ImagesResponseDTO.swift */,
+				E546932A27F67CC6007A1791 /* ImageRequestDTO.swift */,
+			);
+			path = DataMapping;
 			sourceTree = "<group>";
 		};
 		E58A9CDE27F4305A00A4ACBB = {
@@ -239,6 +257,7 @@
 				E58A9CF527F4305D00A4ACBB /* LaunchScreen.storyboard */,
 				E58A9D1D27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift */,
 				E58A9D1F27F46EA700A4ACBB /* KakaoService-Info.plist */,
+				E546932827F678E6007A1791 /* ErrorTracker.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -255,6 +274,7 @@
 		E58A9D2A27F4C3D100A4ACBB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E546932527F6732A007A1791 /* DataMapping */,
 				E58A9D2F27F4C53F00A4ACBB /* Repository */,
 				E58A9D2E27F4C53500A4ACBB /* Network */,
 			);
@@ -489,10 +509,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58A9D4F27F5F38100A4ACBB /* SearchImageUseCase.swift in Sources */,
+				E546932427F66EEF007A1791 /* ImageResultListItemViewModel.swift in Sources */,
 				E58A9D5127F5F3A200A4ACBB /* DefaultSearchImageUseCase.swift in Sources */,
 				E58A9D4427F5B13B00A4ACBB /* SearchImageView.swift in Sources */,
 				E58A9D5327F5F4E300A4ACBB /* DefaultImageRepository.swift in Sources */,
 				E58A9D4227F5972C00A4ACBB /* DefaultSearchCoordinator.swift in Sources */,
+				E546932727F67399007A1791 /* ImagesResponseDTO.swift in Sources */,
 				E546931B27F625DD007A1791 /* ViewReusable.swift in Sources */,
 				E546931027F60B22007A1791 /* UIImage+Resize.swift in Sources */,
 				E58A9D3627F4CA1700A4ACBB /* KakaoAPI.swift in Sources */,
@@ -500,6 +522,7 @@
 				E58A9D1E27F46E4A00A4ACBB /* SecretKey+Bundle+Ex.swift in Sources */,
 				E58A9CEF27F4305A00A4ACBB /* SearchImageViewController.swift in Sources */,
 				E58A9D4727F5D54100A4ACBB /* ViewRepresentable.swift in Sources */,
+				E546932927F678E6007A1791 /* ErrorTracker.swift in Sources */,
 				E58A9CEB27F4305A00A4ACBB /* AppDelegate.swift in Sources */,
 				E58A9D3827F4CA3D00A4ACBB /* Endpoint.swift in Sources */,
 				E58A9D4B27F5F09400A4ACBB /* ImageQuery.swift in Sources */,
@@ -510,6 +533,7 @@
 				E546931927F625AC007A1791 /* SearchImageCollectionViewCell.swift in Sources */,
 				E58A9D3A27F4D43500A4ACBB /* SearchCoordinator.swift in Sources */,
 				E58A9D3F27F596AC00A4ACBB /* Coordinator.swift in Sources */,
+				E546932B27F67CC6007A1791 /* ImageRequestDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

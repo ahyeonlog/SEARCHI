@@ -17,7 +17,12 @@ final class DefaultImageRepository: ImageRepository {
     }
     
     func requestSearchImage(query: ImageQuery, page: Int) -> Single<ImageDocuments> {
-        return provider.rx.request(.searchImage)
-            .map(ImageDocuments.self)
+        let requestDTO = ImageRequestDTO(query: query.query, page: page)
+        return provider.rx.request(.searchImage(param: requestDTO))
+            .map(ImagesResponseDTO.self)
+            .map { $0.toDomain() }
+            .do(onSuccess: { (response) in
+                print("response \(response.meta.totalCount)")
+            })
     }
 }

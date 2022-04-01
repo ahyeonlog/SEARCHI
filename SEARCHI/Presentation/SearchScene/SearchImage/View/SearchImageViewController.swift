@@ -39,8 +39,17 @@ private extension SearchImageViewController {
                 .orEmpty
                 .changed
                 .asDriver()
+                .debounce(.seconds(1))
         )
         
         let output = viewModel?.transform(input: input, disposeBag: disposeBag)
+        
+        output?.imageResultList
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { result in
+                print("rrr", result.forEach { $0.thumbnailURL })
+            })
+            .disposed(by: disposeBag)
+        
     }
 }
