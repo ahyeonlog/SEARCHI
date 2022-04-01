@@ -59,14 +59,17 @@ final class SearchImageViewModel: ViewModelType {
             }
         
         let page = Observable.merge(queryRequest, nextPageRequest)
+            .debug("page number!")
             .share(replay: 1)
         
         let request = Observable.combineLatest(page, input.query.asObservable())
+            .debug("request!")
         
         let errorTracker = ErrorTracker()
         
         let response = request.flatMapLatest { [unowned self] (page, query)
             -> Observable<[ImageResultListItemViewModel]> in
+            self.pageIndex = page
             return self.searchImageUseCase
                  .execute(query: ImageQuery(query: query), page: page)
 //                 .trackActivity(activityIndicator)
@@ -75,13 +78,12 @@ final class SearchImageViewModel: ViewModelType {
                     documents: [],
                     meta: Meta(isEnd: true, pageableCount: 0, totalCount: 0)))
                  .map { $0.documents.map {ImageResultListItemViewModel(with: $0)} }
-                 .debug()
-            
         }
         
        Observable
-            .combineLatest(request, response, output.imageResultList.asObservable()) { [weak self] _, response, imageList in
-//            self?.isAllLoaded = response.count < 20
+            .combineLatest(request, response, output.imageResultList.asObservable()) {
+                [weak self] _, response, imageList in
+            self?.isAllLoaded = response.count < 30
             return self?.pageIndex == 1 ? response : imageList + response
        }
        .sample(response)

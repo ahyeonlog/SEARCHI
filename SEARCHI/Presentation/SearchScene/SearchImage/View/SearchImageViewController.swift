@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class SearchImageViewController: UIViewController {
     let mainView = SearchImageView()
@@ -30,7 +31,10 @@ final class SearchImageViewController: UIViewController {
 private extension SearchImageViewController {
     func configureUI() {
         self.navigationItem.titleView = mainView.searchBar
-        mainView.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        mainView.collectionView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
     }
     
     func bindViewModel() {
@@ -42,6 +46,10 @@ private extension SearchImageViewController {
                 .asDriver()
                 .debounce(.seconds(1))
         )
+        
+        mainView.collectionView.rx_reachedBottom
+            .bind(to: input.loadNextPageTrigger)
+            .disposed(by: disposeBag)
         
         let output = viewModel?.transform(input: input, disposeBag: disposeBag)
         
@@ -55,9 +63,6 @@ private extension SearchImageViewController {
                 cell.bind(viewModel)
             }
             .disposed(by: disposeBag)
-        
-        
-        
     }
 }
 
@@ -68,3 +73,24 @@ extension SearchImageViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellWidth)
     }
 }
+
+
+extension UIScrollView {
+    
+    var rx_reachedBottom: Observable<Void> {
+        return rx.contentOffset
+            .flatMap { [weak self] contentOffset -> Observable<Void> in
+                guard let scrollView = self else {
+                    return Observable.empty()
+                }
+                
+                let visibleHeight = scrollView.frame.height - scrollView.contentInset.top - scrollView.contentInset.bottom
+                let y = contentOffset.y + scrollView.contentInset.top
+                let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
+                
+                return y > threshold ? Observable.just(()) : Observable.empty()
+        }
+    }
+    
+}
+
