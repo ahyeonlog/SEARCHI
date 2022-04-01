@@ -27,8 +27,9 @@ final class DefaultSearchCoordinator: NSObject, SearchCoordinator {
         navigationController.pushViewController(searchImageViewController, animated: false)
     }
     
-    func showImageDetail() {
+    func showImageDetail(imageDocument: ImageDocument) {
         let detailImageViewController = DetailImageViewController()
+        detailImageViewController.viewModel = DetailImageViewModel(imageDocument: imageDocument)
         navigationController.pushViewController(detailImageViewController, animated: true)
     }
 }

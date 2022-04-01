@@ -102,7 +102,7 @@ final class SearchImageViewModel: ViewModelType {
         // image cell
         input.didSelectImageCell
             .drive(onNext: { [weak self] viewModel in
-                self?.coordinator.showImageDetail()
+                self?.coordinator.showImageDetail(imageDocument: viewModel.imageDocument)
             })
             .disposed(by: disposeBag)
         
