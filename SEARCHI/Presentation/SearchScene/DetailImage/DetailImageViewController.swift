@@ -34,6 +34,7 @@ private extension DetailImageViewController {
                 mainView.siteNameLabel.text = "출처: \(siteName)"
             }
             if datetime.isEmpty {
+                print(datetime, "empty")
                 mainView.datetimeLabel.isHidden = true
             } else {
                 mainView.datetimeLabel.isHidden = false

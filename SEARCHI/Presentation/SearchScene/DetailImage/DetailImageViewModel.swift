@@ -14,10 +14,15 @@ final class DetailImageViewModel: ViewModelType {
         self.imageDocument = imageDocument
     }
     func transform(input: Input) -> Output {
-        let output = Output(
+        var output = Output(
             datetime: imageDocument.datetime,
             displaySitename: imageDocument.displaySitename,
             imageURL: imageDocument.imageURL)
+
+//        print("date", imageDocument.datetime)
+//        if let date = imageDocument.datetime {
+//            output.datetime = "\(dateFormatter.string(from: date))"
+//        }
         return output
     }
     
@@ -26,8 +31,14 @@ final class DetailImageViewModel: ViewModelType {
 extension DetailImageViewModel {
     struct Input {}
     struct Output {
-        let datetime: String
+        var datetime: String
         let displaySitename: String
         let imageURL: String
     }
 }
+
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    return formatter
+}()

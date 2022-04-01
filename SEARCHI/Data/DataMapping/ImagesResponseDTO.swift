@@ -72,5 +72,14 @@ extension ImagesResponseDTO.MetaDTO {
     }
 }
 
+// MARK: - Private
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd"
+    formatter.calendar = Calendar(identifier: .iso8601)
+    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+    formatter.locale = Locale(identifier: "ko_kr")
+    return formatter
+}()
 
 

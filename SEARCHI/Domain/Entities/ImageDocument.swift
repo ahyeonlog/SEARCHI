@@ -8,13 +8,13 @@
 import Foundation
 
 // MARK: - Response
-struct ImageDocuments: Codable {
+struct ImageDocuments {
     let documents: [ImageDocument]
     let meta: Meta
 }
 
 // MARK: - Document
-struct ImageDocument: Codable {
+struct ImageDocument {
     let datetime: String
     let displaySitename: String
     let imageURL: String
@@ -24,7 +24,7 @@ struct ImageDocument: Codable {
 }
 
 // MARK: - Meta
-struct Meta: Codable {
+struct Meta {
     let isEnd: Bool
     let pageableCount, totalCount: Int
 }
