@@ -47,14 +47,16 @@ final class DetailImageView: UIView, ViewRepresentable {
 
 extension DetailImageView {
     func setUpViews() {
+        backgroundColor = .systemBackground
+        
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         
         contentView.addSubview(imageView)
         
         contentView.addSubview(labelStack)
-        labelStack.addSubview(siteNameLabel)
-        labelStack.addSubview(datetimeLabel)
+        labelStack.addArrangedSubview(siteNameLabel)
+        labelStack.addArrangedSubview(datetimeLabel)
     }
     
     func setUpConstraints() {
@@ -78,18 +80,11 @@ extension DetailImageView {
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalTo(contentView.snp.bottom).offset(-16).priority(250)
         }
-        
-        scrollView.backgroundColor = .magenta
-        contentView.backgroundColor = .blue
-        imageView.backgroundColor = .brown
-        labelStack.backgroundColor = .yellow
     }
 }
 
 class ScaledHeightImageView: UIImageView {
-
     override var intrinsicContentSize: CGSize {
-
         if let myImage = self.image {
             let myImageWidth = myImage.size.width
             let myImageHeight = myImage.size.height
@@ -97,10 +92,8 @@ class ScaledHeightImageView: UIImageView {
  
             let ratio = myViewWidth/myImageWidth
             let scaledHeight = myImageHeight * ratio
-
             return CGSize(width: myViewWidth, height: scaledHeight)
         }
-
         return CGSize(width: -1.0, height: -1.0)
     }
 
