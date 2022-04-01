@@ -23,7 +23,6 @@ final class SearchImageViewModel: ViewModelType {
     private var isAllLoaded = false
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
-
         let output = Output()
         
         let queryRequest = loading.asObservable()
@@ -59,11 +58,11 @@ final class SearchImageViewModel: ViewModelType {
             }
         
         let page = Observable.merge(queryRequest, nextPageRequest)
-            .debug("page number!")
+//            .debug("page number!")
             .share(replay: 1)
         
         let request = Observable.combineLatest(page, input.query.asObservable())
-            .debug("request!")
+//            .debug("request!")
         
         let errorTracker = ErrorTracker()
         
@@ -80,11 +79,15 @@ final class SearchImageViewModel: ViewModelType {
                  .map { $0.documents.map {ImageResultListItemViewModel(with: $0)} }
         }
         
-       Observable
-            .combineLatest(request, response, output.imageResultList.asObservable()) {
-                [weak self] _, response, imageList in
-            self?.isAllLoaded = response.count < 30
-            return self?.pageIndex == 1 ? response : imageList + response
+       Observable.combineLatest(request, response, output.imageResultList.asObservable()) {
+            [weak self] _, response, imageList in
+                if response.isEmpty {
+                    output.isEmptyResult.accept(true)
+                } else {
+                    output.isEmptyResult.accept(false)
+                }
+                self?.isAllLoaded = response.count < 30
+                return self?.pageIndex == 1 ? response : imageList + response
        }
        .sample(response)
        .bind(to: output.imageResultList)
@@ -96,6 +99,13 @@ final class SearchImageViewModel: ViewModelType {
             .bind(to: loading)
             .disposed(by: disposeBag)
         
+        // image cell
+        input.didSelectImageCell
+            .drive(onNext: { [weak self] viewModel in
+                self?.coordinator.showImageDetail()
+            })
+            .disposed(by: disposeBag)
+        
         return output
     }
 }
@@ -104,9 +114,11 @@ extension SearchImageViewModel {
     struct Input {
         let query: Driver<String>
         let loadNextPageTrigger: PublishSubject<Void> = PublishSubject<Void>()
+        let didSelectImageCell: Driver<ImageResultListItemViewModel>
     }
     
     struct Output {
-        let imageResultList: BehaviorSubject<[ImageResultListItemViewModel]> = BehaviorSubject<[ImageResultListItemViewModel]>(value: [])
+        let imageResultList = BehaviorSubject<[ImageResultListItemViewModel]>(value: [])
+        let isEmptyResult = BehaviorRelay<Bool>(value: true)
     }
 }

@@ -44,7 +44,10 @@ private extension SearchImageViewController {
                 .orEmpty
                 .changed
                 .asDriver()
-                .debounce(.seconds(1))
+                .debounce(.seconds(1)),
+            didSelectImageCell: mainView.collectionView.rx
+                .modelSelected(ImageResultListItemViewModel.self)
+                .asDriver()
         )
         
         mainView.collectionView.rx_reachedBottom
@@ -63,6 +66,17 @@ private extension SearchImageViewController {
                 cell.bind(viewModel)
             }
             .disposed(by: disposeBag)
+        
+        output?.isEmptyResult
+            .asDriver(onErrorJustReturn: true)
+            .drive (onNext: { [weak self] empty in
+                if empty {
+                    self?.mainView.collectionView.setEmptyCollectionView()
+                } else {
+                    self?.mainView.collectionView.restore()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -73,24 +87,3 @@ extension SearchImageViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellWidth)
     }
 }
-
-
-extension UIScrollView {
-    
-    var rx_reachedBottom: Observable<Void> {
-        return rx.contentOffset
-            .flatMap { [weak self] contentOffset -> Observable<Void> in
-                guard let scrollView = self else {
-                    return Observable.empty()
-                }
-                
-                let visibleHeight = scrollView.frame.height - scrollView.contentInset.top - scrollView.contentInset.bottom
-                let y = contentOffset.y + scrollView.contentInset.top
-                let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
-                
-                return y > threshold ? Observable.just(()) : Observable.empty()
-        }
-    }
-    
-}
-

@@ -8,13 +8,17 @@
 import UIKit
 import Kingfisher
 
+enum ImageType {
+    case thumbnail
+    case detail
+}
+
 extension UIImageView {
     func setImage(with urlString: String) {
         let cache = ImageCache.default
         cache.retrieveImage(forKey: urlString, options: nil) { result in
             switch result {
             case .success(let image):
-                // 캐시에서 키를 통해 이미지를 가져온다.
                 if let image = image.image {
 //                    print("cache")
                     self.image = image
