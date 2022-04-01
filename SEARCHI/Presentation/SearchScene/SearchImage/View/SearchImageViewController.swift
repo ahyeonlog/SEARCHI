@@ -30,6 +30,7 @@ final class SearchImageViewController: UIViewController {
 private extension SearchImageViewController {
     func configureUI() {
         self.navigationItem.titleView = mainView.searchBar
+        mainView.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
     
     func bindViewModel() {
@@ -46,10 +47,24 @@ private extension SearchImageViewController {
         
         output?.imageResultList
             .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { result in
-                print("rrr", result.forEach { $0.thumbnailURL })
-            })
+            .drive(
+                mainView.collectionView.rx.items(
+                    cellIdentifier: SearchImageCollectionViewCell.reuseIdentifier,
+                    cellType: SearchImageCollectionViewCell.self)
+            ) { _, viewModel, cell in
+                cell.bind(viewModel)
+            }
             .disposed(by: disposeBag)
         
+        
+        
+    }
+}
+
+extension SearchImageViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width
+        let cellWidth = (width - 6) / 3
+        return CGSize(width: cellWidth, height: cellWidth)
     }
 }

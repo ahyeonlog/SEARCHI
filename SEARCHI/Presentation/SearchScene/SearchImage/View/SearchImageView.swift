@@ -17,12 +17,14 @@ final class SearchImageView: UIView, ViewRepresentable {
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let spacing: CGFloat = 8
+        let spacing: CGFloat = 2
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
 
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.register(Cell.self, forCellWithReuseIdentifier: Cell.reuseIdentifier)
+        cv.register(SearchImageCollectionViewCell.self,
+                    forCellWithReuseIdentifier: SearchImageCollectionViewCell.reuseIdentifier)
+        cv.keyboardDismissMode = .interactive
         cv.backgroundColor = .clear
         return cv
     }()

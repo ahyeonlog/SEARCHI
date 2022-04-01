@@ -11,11 +11,13 @@ struct ImageRequestDTO {
     var toDictionary: [String: Any] {
         let dict: [String: Any] = [
             "query": query,
-            "page": page
+            "page": page,
+            "size": size
         ]
         return dict
     }
     
     let query: String
     let page: Int
+    let size: Int = 30
 }

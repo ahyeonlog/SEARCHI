@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
+
 
 final class SearchImageCollectionViewCell: UICollectionViewCell, ViewRepresentable {
     let searchImageView = UIImageView()
@@ -28,6 +30,41 @@ final class SearchImageCollectionViewCell: UICollectionViewCell, ViewRepresentab
     func setUpConstraints() {
         searchImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+    }
+    
+    func bind(_ viewModel: ImageResultListItemViewModel) {
+        self.searchImageView.setImage(with: viewModel.thumbnailURL)
+    }
+}
+
+extension UIImageView {
+    func setImage(with urlString: String) {
+        let cache = ImageCache.default
+        cache.retrieveImage(forKey: urlString, options: nil) { result in
+            switch result {
+            case .success(let image):
+                // 캐시에서 키를 통해 이미지를 가져온다.
+                if let image = image.image {
+                    DispatchQueue.main.async {
+                        self.image = image
+                    }
+                } else {
+                    guard let url = URL(string: urlString) else {
+                        return
+                    }
+                    // URL로부터 이미지를 다운받고 String 타입의 URL을 캐시키로 지정 후 set
+                    let resource = ImageResource(
+                        downloadURL: url,
+                        cacheKey: urlString
+                    )
+                    self.kf.setImage(with: resource)
+                }
+            case .failure(_):
+    
+                self.image = UIImage(systemName: "star")
+            }
+            
         }
     }
 }

@@ -62,7 +62,6 @@ final class SearchImageViewModel: ViewModelType {
             .share(replay: 1)
         
         let request = Observable.combineLatest(page, input.query.asObservable())
-//            .debug()
         
         let errorTracker = ErrorTracker()
         
@@ -90,7 +89,7 @@ final class SearchImageViewModel: ViewModelType {
        .disposed(by: disposeBag)
         
         Observable
-            .merge(request.map {_ in true },
+            .merge(request.map { _ in true },
                    response.map { _ in false })
             .bind(to: loading)
             .disposed(by: disposeBag)
