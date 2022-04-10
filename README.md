@@ -1,10 +1,9 @@
-# BRANDI 과제
+# Clean Architecture and MVVM + RXSwift 연습
 
-> 참고사항: `SEARCHI/Util/KakaoService-Info.plist` 의 `KAKAO_REST_API_KEY` 에 `REST API 키`를 입력해주세요!
+> 참고사항: `SEARCHI/Util/KakaoService-Info.plist` 의 `KAKAO_REST_API_KEY` 에 `REST API 키` 입력이 필요합니다!
 
 
-
-### 요구사항
+### 고려사항
 
 - [x] UISearchBar에 문자를 입력 후 1초가 지나면 자동으로 검색이 됩니다.
 - [x] 검색어가 변경되면 목록 리셋 후 다시 데이터를 fetch 합니다.
@@ -18,10 +17,18 @@
   - [x] response 데이터에 출처 'display_sitename', 문서 작성 시간 'datetime'이 있을 경우 전체 화면 이미지 밑에 표시해 줍니다.
 
 
-
-
-
 ### 아쉬운점
 
 - 이전 검색 결과가 스크롤이 되어있는 상태에서 새로운 검색어를 입력했을 때 컬렉션뷰가 살짝 스크롤된 상태에서 새로운 데이터가 fetch되는 현상이 있습니다.
 - datetime을 서버에서 온 그대로 출력하고 있습니다.
+
+
+### 사용 라이브러리
+- RxSwift
+- RxCocoa
+- Moya
+- Moya/RxSwift
+- Kingfisher
+- Then
+- Snapkit
+
